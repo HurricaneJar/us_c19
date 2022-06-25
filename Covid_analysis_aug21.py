@@ -135,10 +135,7 @@ for k in range(0,rows):
                           (Covid['Year'] == '2020') &
                           (Covid['Group'] == 'By Year')]        
 
-
-        h = 10 
-        w = 1
-
+      # y val dictionary
         graph_me = {}
         for age in col_uniques['ages']: 
             age_bar = state[state['Age Group'] == age]
@@ -152,32 +149,58 @@ for k in range(0,rows):
             g_me = pd.Series(g_me).astype(int)
             graph_me[age] = g_me
 
-
+      # rank and rename conditions for bar labels
+        
         x = state['Condition'].copy()
         x = [cndtn_alias[row] for row in x]    
         x = pd.Series(x).unique()
 
+      # stacked bars by age group
+        w = .5
         g = 0
-        bot = 0
-
-# bottom needs to be a value; i need, for every condition, to add up the previous
-# values in order to establish the base of the next bar.
-
         old_vals = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
         for row in col_uniques['ages']:
             vals = graph_me[row]
+            if len(vals) == 0:
+                vals = old_vals
             if g == 0:    
-                ax[k,j].bar(x, data = vals, height = h, width = w)
+                ax[k,j].bar(x, vals, 
+                            width = w, bottom = 0)
             else: 
-                ax[k,j].bar(x, data = vals, height = h, width = w, bottom = old_vals) 
+                ax[k,j].bar(x, vals, 
+                            width = w, bottom = old_vals)  
             old_vals += vals
             g += 1
 
-        ax[k,j].set_yticks([]) 
-        ax[k,j].tick_params(axis ='x',labelsize = 3,labelrotation = 90)
+      # plot params
+        ylimits = [100000,80000,60000,40000,20000,10000]
+        ylabels = ['80k','60k','40k','20k','10k']
+        ax[k,j].tick_params(axis ='x', labelsize = 3, labelrotation = 90, bottom = False)
+        ax[k,j].tick_params(axis ='y', labelsize = 5)
         ax[k,j].set_title(ordered_states.iloc[i], fontsize=6)
-        ax[k,j].set_ylim([0,35000])
+        if ordered_states.iloc[i] == 'United States':
+            ax[k,j].set_ylim([0,1000000])
+            ax[k,j].set_yticks([1000000])
+            ax[k,j].set_yticklabels(['1M'])
+        elif ordered_states.iloc[i] == 'California':
+            ax[k,j].set_ylim([0,100000])
+            ax[k,j].set_yticks([50000,100000]) 
+            ax[k,j].set_yticklabels(['50k','100k'])
+        else:
+            ax[k,j].set_ylim([0,ylimits[k]])
+            ax[k,j].set_yticks([ylimits[k]]) 
+            if j == 0:
+                ax[k,j].set_yticklabels([ylabels[k-1]])
+            else:
+                ax[k,j].set_yticklabels([])
         i += 1
 
 plt.tight_layout()
 plt.show()
+
+# Compare age group sums with age group total
+# Condition legend
+# Bars in rank order:
+#    -rank total deaths by condition
+#    -convert conditions to their aliases
+#    -order vals by the condition's total deaths ranking
