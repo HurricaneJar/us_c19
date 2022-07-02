@@ -5,3 +5,4 @@ The aim of this project is to provide a relational plot of Covid-related deaths,
     condition, and year.
     
 I pulled the data from the CDC website, which was uploaded August 1st, 2021.
+https://data.cdc.gov/NCHS/Conditions-Contributing-to-COVID-19-Deaths-by-Stat/hk9y-quqm
