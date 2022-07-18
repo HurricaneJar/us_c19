@@ -9,42 +9,77 @@ The data was pulled from the CDC website, which was uploaded August 1st, 2021.
 https://data.cdc.gov/NCHS/Conditions-Contributing-to-COVID-19-Deaths-by-Stat/hk9y-quqm
 
 
+
 Age Groups are plotted in order:
+
 Base: 0-24 (Orange)
+
 25-34
+
 35-44
+
 45-54
+
 55-64
+
 65-74
+
 75-84
+
 85+
+
 Top: Not stated (Grey)
 
 
+
 X-axis Legend:
+
 'Influenza and pneumonia': 'I&P', 
+
 'Chronic lower respiratory diseases': 'CLRD', 
+
 'Adult respiratory distress syndrome': 'ARDS', 
+
 'Respiratory failure': 'RspF', 
+
 'Respiratory arrest': 'RA', 
+
 'Other diseases of the respiratory system': 'ODRS', 
+
 'Hypertensive diseases': 'HD', 
+
 'Ischemic heart disease': 'IHD', 
+
 'Cardiac arrest': 'CArst', 
+
 'Cardiac arrhythmia': 'CAthm', 
+
 'Heart failure': 'HF', 
+
 'Cerebrovascular diseases': 'CD', 
+
 'Other diseases of the circulatory system': 'ODCS', 
+
 'Sepsis': 'S', 
+
 'Malignant neoplasms': 'MN', 
+
 'Diabetes': 'D', 
+
 'Obesity': 'O', 
+
 'Alzheimer disease': 'AD', 
+
 'Vascular and unspecified dementia': 'VUD', 
+
 'Renal failure': 'RenF', 
+
 'Intentional and unintentional injury, poisoning, and other adverse events': 'IUIPOAE', 
+
 'All other conditions and causes (residual)': 'AOCC', 
+
 'COVID-19': 'C19'
+
 
 
 Upon Completion, some notable questions arose:
@@ -58,4 +93,5 @@ Upon Completion, some notable questions arose:
 
 
 Thank you for your time,
+
 Zach Politz
